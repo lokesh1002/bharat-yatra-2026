@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>भारत यात्रा - कैलेंडर व्यू 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange-100: #FFF4E6;
+            --orange-200: #FFE4C4;
+            --orange-300: #FFD0A0;
+            --orange-400: #FFAB5E;
+            --orange-500: #FF8C00;
+            --orange-600: #F47500;
+            --orange-700: #D65E00;
+            --orange-800: #A84200;
+            --white: #FFFFFF;
+            --off-white: #FFFAF5;
+            --gray-100: #FDF5EE;
+            --gray-200: #F0E8DF;
+            --gray-500: #A08060;
+            --gray-700: #5C4030;
+            --shadow-sm: 0 2px 8px rgba(210, 100, 0, 0.1);
+            --shadow-md: 0 4px 20px rgba(210, 100, 0, 0.15);
+            --shadow-lg: 0 8px 40px rgba(210, 100, 0, 0.2);
+            --shadow-xl: 0 20px 60px rgba(210, 100, 0, 0.25);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--off-white);
+            color: var(--gray-700);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Subtle pattern background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 15% 15%, rgba(255, 140, 0, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(255, 140, 0, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(255, 200, 120, 0.04) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 30px 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--orange-600) 0%, var(--orange-500) 50%, var(--orange-400) 100%);
+            padding: 50px 40px;
+            text-align: center;
+            border-radius: 28px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -40px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 50%;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--white);
+            font-size: 3.2em;
+            margin-bottom: 10px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* STATS BAR */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 24px 20px;
+            border-radius: 18px;
+            text-align: center;
+            border: 1.5px solid var(--orange-200);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--orange-400);
+        }
+
+        .stat-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
+            color: var(--orange-600);
+            margin-bottom: 4px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .stat-card p {
+            color: var(--gray-500);
+            font-size: 0.85em;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* MAIN LAYOUT */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        /* CALENDAR SECTION */
+        .calendar-section {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 24px;
+            border: 1.5px solid var(--orange-200);
+            box-shadow: var(--shadow-md);
+        }
+
+        .month-selector {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+
+        .month-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .month-btn {
+            background: var(--orange-100);
+            border: 1.5px solid var(--orange-300);
+            color: var(--orange-700);
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .month-btn:hover {
+            background: var(--orange-500);
+            border-color: var(--orange-500);
+            color: var(--white);
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-1px);
+        }
+
+        .current-month {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9em;
+            font-weight: 700;
+            color: var(--orange-700);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+
+        .day-header {
+            text-align: center;
+            padding: 10px 4px;
+            font-weight: 600;
+            color: var(--orange-600);
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            background: var(--gray-100);
+            border: 1.5px solid var(--orange-200);
+            border-radius: 14px;
+            padding: 6px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar-day:hover:not(.empty) {
+            background: var(--orange-100);
+            border-color: var(--orange-500);
+            transform: scale(1.06);
+            box-shadow: var(--shadow-md);
+        }
+
+        .calendar-day.empty {
+            background: transparent;
+            border-color: transparent;
+            cursor: default;
+        }
+
+        .day-number {
+            font-weight: 700;
+            font-size: 1.05em;
+            color: var(--gray-700);
+        }
+
+        .day-indicator {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            margin-top: 3px;
+        }
+
+        /* Type-specific day styles */
+        .calendar-day.workshop {
+            background: linear-gradient(135deg, #FFF4E6, #FFE4C4);
+            border-color: var(--orange-400);
+        }
+        .calendar-day.workshop .day-number { color: var(--orange-700); }
+        .calendar-day.workshop .day-indicator { background: var(--orange-500); }
+
+        .calendar-day.meeting {
+            background: linear-gradient(135deg, #FFF8F0, #FFF0E0);
+            border-color: var(--orange-300);
+        }
+        .calendar-day.meeting .day-number { color: var(--orange-600); }
+        .calendar-day.meeting .day-indicator { background: var(--orange-400); }
+
+        .calendar-day.travel {
+            background: linear-gradient(135deg, #FFF1E2, #FFDDB5);
+            border-color: var(--orange-600);
+        }
+        .calendar-day.travel .day-number { color: var(--orange-800); }
+        .calendar-day.travel .day-indicator { background: var(--orange-700); }
+
+        .calendar-day.executive {
+            background: linear-gradient(135deg, var(--orange-500), var(--orange-400));
+            border-color: var(--orange-600);
+        }
+        .calendar-day.executive .day-number { color: var(--white); }
+        .calendar-day.executive .day-indicator { background: var(--white); }
+
+        .calendar-day.selected {
+            border: 2.5px solid var(--orange-600);
+            box-shadow: 0 0 0 4px rgba(244, 117, 0, 0.2), var(--shadow-md);
+        }
+
+        .calendar-day.today {
+            border: 2.5px solid var(--orange-800);
+            box-shadow: 0 0 0 3px rgba(168, 66, 0, 0.15);
+        }
+        .calendar-day.today .day-number::after {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 4px;
+            background: var(--orange-800);
+            border-radius: 50%;
+            margin: 2px auto 0;
+        }
+
+        /* DETAILS PANEL */
+        .details-panel {
+            background: var(--white);
+            padding: 28px;
+            border-radius: 24px;
+            border: 1.5px solid var(--orange-200);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+
+        .details-panel::-webkit-scrollbar {
+            width: 6px;
+        }
+        .details-panel::-webkit-scrollbar-track {
+            background: var(--orange-100);
+            border-radius: 10px;
+        }
+        .details-panel::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--orange-500), var(--orange-400));
+            border-radius: 10px;
+        }
+
+        .details-header {
+            margin-bottom: 20px;
+            padding-bottom: 18px;
+            border-bottom: 2px solid var(--orange-200);
+        }
+
+        .details-date {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7em;
+            font-weight: 700;
+            color: var(--orange-700);
+            margin-bottom: 10px;
+        }
+
+        .details-type {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .type-workshop { background: var(--orange-500); color: var(--white); }
+        .type-meeting { background: var(--orange-200); color: var(--orange-800); }
+        .type-travel { background: var(--orange-700); color: var(--white); }
+        .type-executive { background: linear-gradient(135deg, var(--orange-600), var(--orange-400)); color: var(--white); }
+
+        .details-content { margin-top: 18px; }
+
+        .activity-item {
+            background: var(--orange-100);
+            padding: 16px 18px;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--orange-500);
+            transition: all 0.2s ease;
+        }
+
+        .activity-item:hover {
+            background: var(--orange-200);
+            transform: translateX(3px);
+        }
+
+        .activity-item h4 {
+            color: var(--orange-700);
+            margin-bottom: 6px;
+            font-size: 0.95em;
+            font-weight: 600;
+        }
+
+        .activity-item p {
+            color: var(--gray-700);
+            line-height: 1.7;
+            font-size: 0.9em;
+            margin-bottom: 4px;
+        }
+
+        .activity-item .location {
+            color: var(--orange-600);
+            font-weight: 500;
+        }
+
+        .no-selection {
+            text-align: center;
+            color: var(--gray-500);
+            padding: 50px 20px;
+        }
+
+        .no-selection-icon {
+            font-size: 4em;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .no-selection h3 {
+            color: var(--orange-600);
+            margin-bottom: 8px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* LEGEND */
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 24px;
+            padding: 20px;
+            background: var(--orange-100);
+            border-radius: 16px;
+            border: 1px solid var(--orange-200);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88em;
+            color: var(--gray-700);
+            font-weight: 500;
+        }
+
+        .legend-color {
+            width: 22px;
+            height: 22px;
+            border-radius: 7px;
+            flex-shrink: 0;
+        }
+        .legend-color.workshop { background: linear-gradient(135deg, var(--orange-500), var(--orange-400)); }
+        .legend-color.meeting { background: linear-gradient(135deg, var(--orange-300), var(--orange-200)); }
+        .legend-color.travel { background: linear-gradient(135deg, var(--orange-700), var(--orange-600)); }
+        .legend-color.executive { background: linear-gradient(135deg, var(--orange-600), var(--orange-500)); border: 2px solid var(--white); outline: 1px solid var(--orange-400); }
+
+        /* QUICK JUMP */
+        .quick-jump {
+            margin-top: 20px;
+            padding: 20px;
+            background: var(--orange-100);
+            border-radius: 16px;
+            border: 1px solid var(--orange-200);
+        }
+
+        .quick-jump h4 {
+            margin-bottom: 14px;
+            color: var(--orange-700);
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .quick-jump-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .quick-jump-btn {
+            background: var(--white);
+            border: 1.5px solid var(--orange-300);
+            color: var(--orange-700);
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.82em;
+            font-weight: 500;
+        }
+
+        .quick-jump-btn:hover {
+            background: var(--orange-500);
+            border-color: var(--orange-500);
+            color: var(--white);
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-1px);
+        }
+
+        .quick-jump-btn.primary {
+            background: linear-gradient(135deg, var(--orange-600), var(--orange-500));
+            border-color: transparent;
+            color: var(--white);
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .quick-jump-btn.primary:hover {
+            background: linear-gradient(135deg, var(--orange-700), var(--orange-600));
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(100, 50, 0, 0.5);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.show { display: flex; }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 28px;
+            border: 1.5px solid var(--orange-200);
+            max-width: 1100px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            animation: slideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .modal-content::-webkit-scrollbar { width: 8px; }
+        .modal-content::-webkit-scrollbar-track { background: var(--orange-100); border-radius: 10px; }
+        .modal-content::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--orange-500), var(--orange-400)); border-radius: 10px; }
+
+        .modal-header {
+            padding: 28px 32px;
+            border-bottom: 2px solid var(--orange-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            z-index: 10;
+        }
+
+        .modal-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: var(--orange-700);
+        }
+
+        .close-btn {
+            background: var(--orange-100);
+            border: 1.5px solid var(--orange-300);
+            color: var(--orange-700);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            background: var(--orange-500);
+            border-color: var(--orange-500);
+            color: var(--white);
+            transform: rotate(90deg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .modal-body { padding: 30px 32px; }
+
+        .journey-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .journey-stat {
+            background: var(--orange-100);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1.5px solid var(--orange-200);
+        }
+
+        .journey-stat h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: var(--orange-600);
+            margin-bottom: 4px;
+        }
+
+        .journey-stat p {
+            color: var(--gray-500);
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        /* TIMELINE */
+        .journey-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .journey-timeline::before {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--orange-600), var(--orange-400), var(--orange-200));
+            border-radius: 3px;
+        }
+
+        .journey-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding: 18px 20px;
+            background: var(--gray-100);
+            border-radius: 16px;
+            border: 1.5px solid var(--orange-200);
+            transition: all 0.25s ease;
+        }
+
+        .journey-item:hover {
+            background: var(--orange-100);
+            border-color: var(--orange-400);
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .journey-item::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 22px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--orange-600), var(--orange-400));
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 2px var(--orange-300);
+            z-index: 2;
+        }
+
+        .journey-date {
+            font-size: 1.05em;
+            font-weight: 700;
+            color: var(--orange-700);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .journey-location {
+            font-size: 1em;
+            color: var(--gray-700);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .journey-details {
+            color: var(--gray-700);
+            font-size: 0.88em;
+            line-height: 1.7;
+        }
+
+        .journey-type-badge {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .badge-workshop { background: var(--orange-500); color: var(--white); }
+        .badge-meeting { background: var(--orange-200); color: var(--orange-800); }
+        .badge-travel { background: var(--orange-700); color: var(--white); }
+        .badge-executive { background: linear-gradient(135deg, var(--orange-600), var(--orange-500)); color: var(--white); }
+
+        .journey-arrow { color: var(--orange-500); font-weight: 700; margin: 0 4px; }
+
+        /* RESPONSIVE */
+        @media (max-width: 1200px) {
+            .main-content { grid-template-columns: 1fr; }
+            .details-panel { position: relative; top: 0; max-height: none; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2em; }
+            .calendar-grid { gap: 5px; }
+            .calendar-day { padding: 4px; }
+            .day-number { font-size: 0.95em; }
+            .legend { grid-template-columns: 1fr; }
+            .container { padding: 16px; }
+            header { padding: 32px 20px; }
+            .calendar-section, .details-panel { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🇮🇳 भारत यात्रा 2026</h1>
+            <p class="subtitle">कैलेंडर व्यू · संपूर्ण कार्यक्रम योजना</p>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stat-card">
+                <h3>73</h3>
+                <p>कुल दिन</p>
+            </div>
+            <div class="stat-card">
+                <h3>35</h3>
+                <p>कार्यशालाएं</p>
+            </div>
+            <div class="stat-card">
+                <h3>28+</h3>
+                <p>राज्य / केंद्र शासित</p>
+            </div>
+            <div class="stat-card">
+                <h3>2</h3>
+                <p>राष्ट्रीय बैठकें</p>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="calendar-section">
+                <div class="month-selector">
+                    <div class="month-nav">
+                        <button class="month-btn" onclick="changeMonth(-1)">◀ पिछला</button>
+                        <button class="month-btn" onclick="changeMonth(1)">अगला ▶</button>
+                    </div>
+                    <div class="current-month" id="currentMonth">फरवरी 2026</div>
+                </div>
+
+                <div class="calendar-grid" id="calendarGrid"></div>
+
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color workshop"></div>
+                        <span>कार्यशाला</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color meeting"></div>
+                        <span>बैठकें</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color travel"></div>
+                        <span>यात्रा दिवस</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color executive"></div>
+                        <span>राष्ट्रीय कार्यकारिणी</span>
+                    </div>
+                </div>
+
+                <div class="quick-jump">
+                    <h4>🚀 त्वरित नेविगेशन</h4>
+                    <div class="quick-jump-buttons">
+                        <button class="quick-jump-btn" onclick="jumpToDate('2026-02-07')">यात्रा शुरुआत</button>
+                        <button class="quick-jump-btn" onclick="jumpToDate('2026-02-16')">आज</button>
+                        <button class="quick-jump-btn" onclick="jumpToDate('2026-03-31')">राष्ट्रीय बैठक</button>
+                        <button class="quick-jump-btn" onclick="jumpToDate('2026-04-20')">यात्रा समाप्ति</button>
+                        <button class="quick-jump-btn primary" onclick="showFullJourney()">🗺️ पूरी यात्रा देखें</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="details-panel" id="detailsPanel">
+                <div class="no-selection">
+                    <div class="no-selection-icon">📅</div>
+                    <h3>कोई तिथि चुनें</h3>
+                    <p>कैलेंडर से किसी तिथि पर क्लिक करें</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full Journey Modal -->
+        <div class="modal-overlay" id="journeyModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>🗺️ पूरी यात्रा का विवरण</h2>
+                    <button class="close-btn" onclick="closeJourneyModal()">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="journey-stats">
+                        <div class="journey-stat"><h3>73</h3><p>कुल दिन</p></div>
+                        <div class="journey-stat"><h3>7 फरवरी</h3><p>यात्रा शुरुआत</p></div>
+                        <div class="journey-stat"><h3>20 अप्रैल</h3><p>यात्रा समाप्ति</p></div>
+                        <div class="journey-stat"><h3>28+</h3><p>राज्य / केंद्र शासित</p></div>
+                    </div>
+                    <div class="journey-timeline" id="journeyTimeline"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const itineraryData = {
+            '2026-02-07': { type: 'travel', title: 'यात्रा दिवस', activities: [{ title: 'प्रातः प्रस्थान', location: 'श्री मनोरमा गौलोक धाम नंदगांव' }, { title: 'दोपहर दर्शन', location: 'देशनोक करणी माता जी' }, { title: 'रात्रि विश्राम', location: 'जींद (हरियाणा)' }] },
+            '2026-02-08': { type: 'workshop', title: 'कार्यशाला - 1', activities: [{ title: 'कार्यशाला', location: 'जींद (हरियाणा)', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'यात्रा', location: 'जींद → कुरुक्षेत्र (110 किमी, 2 घंटे)' }, { title: 'रात्रि विश्राम', location: 'कुरुक्षेत्र (हरियाणा)' }] },
+            '2026-02-09': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'कुरुक्षेत्र (हरियाणा) – प्रातः 08:00' }, { title: 'बैठक', location: 'पटियाला (पंजाब) – दोपहर 12:00' }, { title: 'रात्रि विश्राम', location: 'चंडीगढ़' }] },
+            '2026-02-10': { type: 'workshop', title: 'कार्यशाला - 2', activities: [{ title: 'कार्यशाला', location: 'चंडीगढ़', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'यात्रा', location: 'चंडीगढ़ → लुधियाना (100 किमी, 2-2.5 घंटे)' }, { title: 'रात्रि विश्राम', location: 'लुधियाना (पंजाब)' }] },
+            '2026-02-11': { type: 'workshop', title: 'कार्यशाला - 3', activities: [{ title: 'कार्यशाला', location: 'लुधियाना (पंजाब)', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'यात्रा', location: 'लुधियाना → अमृतसर (140 किमी, 3-3.5 घंटे)' }, { title: 'रात्रि विश्राम', location: 'अमृतसर (पंजाब)' }] },
+            '2026-02-12': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'अमृतसर (पंजाब) – प्रातः 08:00' }, { title: 'बैठक', location: 'गुरदासपुर (पंजाब) – दोपहर 12:00' }, { title: 'रात्रि विश्राम', location: 'जम्मू (जम्मू एवं कश्मीर)' }] },
+            '2026-02-13': { type: 'workshop', title: 'कार्यशाला - 4', activities: [{ title: 'कार्यशाला', location: 'जम्मू (जम्मू एवं कश्मीर)', time: 'प्रातः 08:00 – दोपहर 04:00' }, { title: 'यात्रा', location: 'जम्मू → पठानकोट (100 किमी, 3 घंटे)' }, { title: 'रात्रि विश्राम व बैठक', location: 'पठानकोट (पंजाब) – सायं 07:30' }] },
+            '2026-02-14': { type: 'meeting', title: 'बैठकें एवं यात्रा', activities: [{ title: 'बैठक', location: 'नूरपुर – 09:00' }, { title: 'बैठक', location: 'गगल – 12:00' }, { title: 'बैठक', location: 'टांडा – 01:30' }, { title: 'बैठक', location: 'बैजनाथ – 04:00' }, { title: 'रात्रि विश्राम', location: 'मंडी (हिमाचल प्रदेश) – 08:00' }] },
+            '2026-02-15': { type: 'workshop', title: 'कार्यशाला - 5', activities: [{ title: 'कार्यशाला', location: 'मंडी (हिमाचल प्रदेश)', time: 'प्रातः 08:00 – सायं 05:00' }, { title: 'यात्रा', location: 'मंडी → अंबाला (200 किमी, 4-5 घंटे)' }, { title: 'रात्रि विश्राम', location: 'अंबाला (हरियाणा)' }] },
+            '2026-02-16': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'अंबाला (हरियाणा) – प्रातः 08:00' }, { title: 'बैठक', location: 'करनाल (हरियाणा) – दोपहर 12:00' }, { title: 'बैठक', location: 'मुज़फ्फरनगर (उत्तर प्रदेश) – सायं 04:00' }, { title: 'रात्रि विश्राम', location: 'ऋषिकेश (उत्तराखंड)' }] },
+            '2026-02-17': { type: 'workshop', title: 'कार्यशाला - 6', activities: [{ title: 'कार्यशाला', location: 'ऋषिकेश (उत्तराखंड)', time: 'प्रातः 08:00 – सायं 04:00' }, { title: 'यात्रा', location: 'ऋषिकेश → बुलांदशहर (240 किमी, 5 घंटे)' }, { title: 'रात्रि विश्राम', location: 'बुलांदशहर (उत्तर प्रदेश)' }] },
+            '2026-02-18': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'बुलांदशहर – 08:00' }, { title: 'बैठक', location: 'अलीगढ़ – 12:00' }, { title: 'बैठक', location: 'एटा – 05:00' }, { title: 'रात्रि विश्राम', location: 'लखनऊ (उत्तर प्रदेश)' }] },
+            '2026-02-19': { type: 'workshop', title: 'कार्यशाला - 7', activities: [{ title: 'कार्यशाला', location: 'लखनऊ (उत्तर प्रदेश)', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'यात्रा', location: 'लखनऊ → आज़मगढ़ (270 किमी, 4-5 घंटे)' }, { title: 'रात्रि विश्राम', location: 'आज़मगढ़ (उत्तर प्रदेश)' }] },
+            '2026-02-20': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'आज़मगढ़ (उत्तर प्रदेश) – 08:00' }, { title: 'बैठक', location: 'बक्सर (बिहार) – 12:30' }, { title: 'बैठक', location: 'आरा (बिहार) – 04:30' }, { title: 'रात्रि विश्राम', location: 'पटना (बिहार)' }] },
+            '2026-02-21': { type: 'workshop', title: 'कार्यशाला - 8', activities: [{ title: 'कार्यशाला', location: 'पटना (बिहार)', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'यात्रा', location: 'पटना → गया (100 किमी, 2 घंटे)' }, { title: 'रात्रि विश्राम व बैठक', location: 'गया (बिहार) – 08:00' }] },
+            '2026-02-22': { type: 'meeting', title: 'बैठकें एवं यात्रा', activities: [{ title: 'बैठक', location: 'चौपारण – 10:00' }, { title: 'बैठक', location: 'बरही – 01:00' }, { title: 'बैठक', location: 'हजारीबाग (झारखंड) – 04:00' }, { title: 'रात्रि विश्राम', location: 'हजारीबाग (झारखंड)' }] },
+            '2026-02-23': { type: 'meeting', title: 'बैठकें एवं यात्रा', activities: [{ title: 'बैठक', location: 'रांची – 10:00' }, { title: 'बैठक', location: 'खूंटी – 01:00' }, { title: 'बैठक', location: 'चक्रधरपुर – 05:00' }, { title: 'बैठक', location: 'चाईबासा (झारखंड) – 08:00' }, { title: 'रात्रि विश्राम', location: 'जमशेदपुर (झारखंड)' }] },
+            '2026-02-24': { type: 'workshop', title: 'कार्यशाला - 9', activities: [{ title: 'कार्यशाला', location: 'जमशेदपुर (झारखंड)', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'यात्रा', location: 'जमशेदपुर → खड़गपुर (160 किमी, 3-4 घंटे)' }, { title: 'रात्रि विश्राम', location: 'खड़गपुर (पश्चिम बंगाल)' }] },
+            '2026-02-25': { type: 'meeting', title: 'बैठक', activities: [{ title: 'बैठक', location: 'खड़गपुर (पश्चिम बंगाल) – प्रातः 08:00' }, { title: 'यात्रा', location: 'खड़गपुर → कोलकाता (130 किमी, 4 घंटे)' }, { title: 'रात्रि विश्राम', location: 'कोलकाता (पश्चिम बंगाल)' }] },
+            '2026-02-26': { type: 'executive', title: 'कार्यशाला - 10 / राष्ट्रीय कार्यकारिणी', activities: [{ title: 'कार्यशाला - 10 / राष्ट्रीय कार्यकारिणी बैठक', location: 'कोलकाता (पश्चिम बंगाल)', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'यात्रा', location: 'कोलकाता → बारीपदा (230 किमी, 6-7 घंटे)' }, { title: 'रात्रि विश्राम', location: 'बारीपदा (ओडिशा)' }] },
+            '2026-02-27': { type: 'meeting', title: 'बैठकें एवं यात्रा', activities: [{ title: 'बैठक', location: 'बारीपदा (ओडिशा) – प्रातः 08:00' }, { title: 'बैठक', location: 'बालासोर (ओडिशा) – 11:00' }, { title: 'बैठक', location: 'भद्रक (ओडिशा) – 02:30' }, { title: 'बैठक', location: 'जाजपुर (ओडिशा) – 05:30' }, { title: 'रात्रि विश्राम', location: 'भुवनेश्वर (ओडिशा)' }] },
+            '2026-02-28': { type: 'workshop', title: 'कार्यशाला - 11', activities: [{ title: 'कार्यशाला', location: 'भुवनेश्वर (ओडिशा)', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'यात्रा', location: 'भुवनेश्वर → अंगुल (130 किमी, 3 घंटे)' }, { title: 'रात्रि विश्राम', location: 'अंगुल (ओडिशा)' }] },
+            '2026-03-01': { type: 'meeting', title: 'बैठकें एवं यात्रा', activities: [{ title: 'बैठक', location: 'अंगुल (ओडिशा) – 08:00' }, { title: 'बैठक', location: 'संबलपुर (ओडिशा) – 01:00' }, { title: 'रात्रि विश्राम', location: 'रायपुर (छत्तीसगढ़)' }] },
+            '2026-03-02': { type: 'workshop', title: 'कार्यशाला - 12', activities: [{ title: 'कार्यशाला', location: 'रायपुर (छत्तीसगढ़)', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'यात्रा', location: 'रायपुर → भंडारा (230 किमी, 5 घंटे)' }, { title: 'रात्रि विश्राम', location: 'भंडारा (महाराष्ट्र)' }] },
+            '2026-03-03': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'भंडारा (महाराष्ट्र) – 09:00-10:00' }, { title: 'बैठक', location: 'नागपुर (महाराष्ट्र) – 12:00-01:00' }, { title: 'बैठक', location: 'आदिलाबाद (तेलंगाना) – 05:00-06:00' }, { title: 'रात्रि विश्राम', location: 'नांदेड़ (महाराष्ट्र)' }] },
+            '2026-03-04': { type: 'workshop', title: 'कार्यशाला - 13', activities: [{ title: 'कार्यशाला', location: 'नांदेड़ (महाराष्ट्र)', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'यात्रा', location: 'नांदेड़ → निजामाबाद (116 किमी, 3 घंटे)' }, { title: 'रात्रि विश्राम व बैठक', location: 'निजामाबाद (तेलंगाना)' }] },
+            '2026-03-05': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'कामारेडी – 10:00' }, { title: 'बैठक', location: 'रामयमपेट' }, { title: 'रात्रि विश्राम', location: 'हैदराबाद (तेलंगाना)' }] },
+            '2026-03-06': { type: 'workshop', title: 'कार्यशाला - 14', activities: [{ title: 'कार्यशाला', location: 'हैदराबाद (तेलंगाना)', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'यात्रा', location: 'हैदराबाद → खम्मम (200 किमी, 4 घंटे)' }, { title: 'रात्रि विश्राम व बैठक', location: 'खम्मम (तेलंगाना)' }] },
+            '2026-03-07': { type: 'workshop', title: 'कार्यशाला - 15', activities: [{ title: 'यात्रा', location: 'खम्मम → विजयवाड़ा (135 किमी, 3 घंटे)' }, { title: 'कार्यशाला', location: 'विजयवाड़ा (आंध्र प्रदेश)', time: 'प्रातः 11:00 – सायं 08:00' }, { title: 'रात्रि विश्राम', location: 'गुंटूर (आंध्र प्रदेश)' }] },
+            '2026-03-08': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'गुंटूर (आंध्र प्रदेश) – प्रातः 08:00' }, { title: 'बैठक', location: 'ओंगोल (आंध्र प्रदेश) – दोपहर 12:00' }, { title: 'बैठक', location: 'गुडूर / नेल्लोर (आंध्र प्रदेश) – सायं 04:00' }, { title: 'रात्रि विश्राम', location: 'चेन्नई (तमिलनाडु)' }] },
+            '2026-03-09': { type: 'workshop', title: 'कार्यशाला - 16', activities: [{ title: 'कार्यशाला', location: 'चेन्नई (तमिलनाडु)', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'यात्रा', location: 'चेन्नई → पुडुचेरी (135 किमी, 3-4 घंटे)' }, { title: 'रात्रि विश्राम', location: 'पुडुचेरी' }, { title: 'रात्रि बैठक', location: '07:30' }] },
+            '2026-03-10': { type: 'meeting', title: 'बैठक', activities: [{ title: 'बैठक', location: 'त्रिचि / श्रीरंगम – दोपहर 03:00' }, { title: 'रात्रि विश्राम', location: 'मदुरै (तमिलनाडु)' }] },
+            '2026-03-11': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'मदुरै (तमिलनाडु) – 08:00' }, { title: 'बैठक', location: 'तिरुनेलवेली – 01:00' }, { title: 'बैठक', location: 'कन्याकुमारी (तमिलनाडु) – 05:00' }, { title: 'रात्रि विश्राम', location: 'तिरुवनंतपुरम (केरल)' }] },
+            '2026-03-12': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'तिरुवनंतपुरम (केरल) – प्रातः 08:00' }, { title: 'बैठक', location: 'एर्नाकुलम / कोच्चि (केरल) – 03:00' }, { title: 'रात्रि विश्राम', location: 'एर्नाकुलम / कोच्चि (केरल)' }] },
+            '2026-03-13': { type: 'workshop', title: 'कार्यशाला - 17', activities: [{ title: 'कार्यशाला', location: 'एर्नाकुलम / कोच्चि (केरल)', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'यात्रा', location: 'कोच्चि → कोझिकोड (200 किमी, 5 घंटे)' }, { title: 'रात्रि विश्राम', location: 'कोझिकोड (केरल)' }] },
+            '2026-03-14': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'कोझिकोड (केरल) – 08:00' }, { title: 'बैठक', location: 'मैसूरु (कर्नाटक) – 05:00' }, { title: 'रात्रि विश्राम', location: 'बेंगलुरु (कर्नाटक)' }] },
+            '2026-03-15': { type: 'workshop', title: 'कार्यशाला - 18', activities: [{ title: 'कार्यशाला', location: 'बेंगलुरु (कर्नाटक)', time: 'प्रातः 08:00 – सायं 05:00' }, { title: 'यात्रा', location: 'बेंगलुरु → चित्रदुर्ग (200 किमी, 5 घंटे)' }, { title: 'रात्रि विश्राम', location: 'चित्रदुर्ग (कर्नाटक)' }] },
+            '2026-03-16': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'चित्रदुर्ग – 08:00' }, { title: 'बैठक', location: 'दावणगेरे – 11:00' }, { title: 'बैठक', location: 'हुब्बल्ली (कर्नाटक) – 05:00' }, { title: 'रात्रि विश्राम', location: 'पणजी (गोवा)' }] },
+            '2026-03-17': { type: 'workshop', title: 'कार्यशाला - 19', activities: [{ title: 'कार्यशाला', location: 'पणजी (गोवा)', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'यात्रा', location: 'पणजी → कोल्हापुर (230 किमी, 6-7 घंटे)' }, { title: 'रात्रि विश्राम', location: 'कोल्हापुर (महाराष्ट्र)' }] },
+            '2026-03-18': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'कोल्हापुर – 08:00' }, { title: 'बैठक', location: 'सातारा – 01:00' }, { title: 'बैठक', location: 'पुणे (महाराष्ट्र) – 05:00' }, { title: 'रात्रि विश्राम', location: 'मुंबई (महाराष्ट्र)' }] },
+            '2026-03-19': { type: 'workshop', title: 'कार्यशाला - 21', activities: [{ title: 'कार्यशाला', location: 'मुंबई (महाराष्ट्र)', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'यात्रा', location: 'मुंबई → दमन (190 किमी, 4-5 घंटे)' }, { title: 'रात्रि विश्राम', location: 'दमन (केंद्र शासित प्रदेश)' }] },
+            '2026-03-20': { type: 'workshop', title: 'कार्यशाला - 22', activities: [{ title: 'कार्यशाला', location: 'दमन (केंद्र शासित प्रदेश)', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'यात्रा', location: 'दमन → बारडोली (130 किमी, 2 घंटे)' }, { title: 'रात्रि विश्राम', location: 'बारडोली (गुजरात) – 08:00' }] },
+            '2026-03-21': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'नवापुर (महाराष्ट्र) – 10:00' }, { title: 'बैठक', location: 'धुले – 03:00' }, { title: 'रात्रि विश्राम व बैठक', location: 'जलगांव (महाराष्ट्र) – 07:00' }] },
+            '2026-03-22': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'आकोट (महाराष्ट्र) – 08:00' }, { title: 'बैठक', location: 'बैतूल – 02:00' }, { title: 'बैठक', location: 'नर्मदापुरम (मध्य प्रदेश) – 06:00' }, { title: 'रात्रि विश्राम', location: 'भोपाल (मध्य प्रदेश)' }] },
+            '2026-03-23': { type: 'workshop', title: 'कार्यशाला - 23', activities: [{ title: 'कार्यशाला', location: 'भोपाल (मध्य प्रदेश) – लाल घाटी गुफा मंदिर', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'यात्रा', location: 'भोपाल → देवास (150 किमी, 3 घंटे)' }, { title: 'रात्रि विश्राम', location: 'देवास (मध्य प्रदेश)' }] },
+            '2026-03-24': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'इंदौर – 09:00' }, { title: 'बैठक', location: 'धार (मध्य प्रदेश) – 01:00' }, { title: 'बैठक', location: 'गोधरा (गुजरात) – 07:00' }, { title: 'रात्रि विश्राम', location: 'अहमदाबाद (गुजरात)' }] },
+            '2026-03-25': { type: 'workshop', title: 'कार्यशाला - 24', activities: [{ title: 'कार्यशाला', location: 'अहमदाबाद (गुजरात)', time: 'प्रातः 08:00 – सायं 05:00' }, { title: 'यात्रा', location: 'अहमदाबाद → राजकोट (200 किमी, 4 घंटे)' }, { title: 'रात्रि विश्राम व बैठक', location: 'राजकोट (गुजरात) – 09:00' }] },
+            '2026-03-26': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'सुरेंद्रनगर – 08:00' }, { title: 'बैठक', location: 'राधनपुर – 01:00' }, { title: 'बैठक', location: 'डीसा (गुजरात) – 02:30' }, { title: 'रात्रि विश्राम', location: 'नंदगांव (राजस्थान)' }] },
+            '2026-03-27': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'जालौर (राजस्थान) – 10:00' }, { title: 'बैठक', location: 'जोधपुर (राजस्थान) – 03:00' }, { title: 'रात्रि विश्राम', location: 'नागौर (राजस्थान)' }] },
+            '2026-03-28': { type: 'workshop', title: 'कार्यशाला - 25', activities: [{ title: 'कार्यशाला', location: 'नागौर (राजस्थान)', time: 'प्रातः 08:00 – सायं 05:00' }, { title: 'यात्रा', location: 'नागौर → सीकर (160 किमी, 3 घंटे)' }, { title: 'रात्रि विश्राम', location: 'सीकर (राजस्थान)' }] },
+            '2026-03-29': { type: 'meeting', title: 'बैठकें', activities: [{ title: 'बैठक', location: 'सीकर – 08:00' }, { title: 'बैठक', location: 'खेतड़ी – 11:00' }, { title: 'बैठक', location: 'नारनौल – 02:00' }, { title: 'बैठक', location: 'रेवाड़ी – 05:00' }, { title: 'बैठक', location: 'गुरुग्राम – 08:00' }, { title: 'रात्रि विश्राम', location: 'दिल्ली' }] },
+            '2026-03-30': { type: 'workshop', title: 'कार्यशाला - 26', activities: [{ title: 'कार्यशाला', location: 'दिल्ली', time: 'प्रातः 08:00 – सायं 06:00' }, { title: 'रात्रि विश्राम', location: 'दिल्ली' }] },
+            '2026-03-31': { type: 'executive', title: 'राष्ट्रीय कार्यकारिणी बैठक', activities: [{ title: 'राष्ट्रीय कार्यकारिणी बैठक', location: 'दिल्ली' }, { title: 'हवाई यात्रा', location: 'दिल्ली → कोलकाता' }, { title: 'रात्रि विश्राम', location: 'कोलकाता' }] },
+            '2026-04-01': { type: 'workshop', title: 'कार्यशाला - 27', activities: [{ title: 'कार्यशाला', location: 'कोलकाता' }, { title: 'हवाई यात्रा', location: 'कोलकाता → गुवाहाटी' }, { title: 'रात्रि विश्राम', location: 'गुवाहाटी (असम)' }] },
+            '2026-04-02': { type: 'workshop', title: 'कार्यशाला - 28', activities: [{ title: 'कार्यशाला', location: 'गुवाहाटी (असम)' }] },
+            '2026-04-03': { type: 'workshop', title: 'कार्यशाला - 29', activities: [{ title: 'कार्यशाला', location: 'गुवाहाटी (असम)' }] },
+            '2026-04-04': { type: 'meeting', title: 'लघु बैठक', activities: [{ title: 'लघु बैठक', location: 'गुवाहाटी' }, { title: 'यात्रा', location: 'गुवाहाटी → शिलांग (मेघालय)' }, { title: 'रात्रि विश्राम', location: 'शिलांग' }] },
+            '2026-04-05': { type: 'workshop', title: 'कार्यशाला - 30', activities: [{ title: 'कार्यशाला', location: 'शिलांग (मेघालय)' }] },
+            '2026-04-06': { type: 'travel', title: 'यात्रा', activities: [{ title: 'यात्रा', location: 'शिलांग → तेजपुर → ईटानगर (अरुणाचल प्रदेश)' }] },
+            '2026-04-07': { type: 'workshop', title: 'कार्यशाला - 31', activities: [{ title: 'कार्यशाला', location: 'ईटानगर (अरुणाचल प्रदेश)' }] },
+            '2026-04-08': { type: 'travel', title: 'यात्रा', activities: [{ title: 'यात्रा', location: 'ईटानगर → दीमापुर → कोहिमा (नागालैंड)' }] },
+            '2026-04-09': { type: 'workshop', title: 'कार्यशाला - 32', activities: [{ title: 'कार्यशाला', location: 'कोहिमा (नागालैंड)' }] },
+            '2026-04-10': { type: 'meeting', title: 'लघु बैठक', activities: [{ title: 'लघु बैठक', location: 'कोहिमा' }, { title: 'यात्रा', location: 'कोहिमा → इम्फाल (मणिपुर)' }] },
+            '2026-04-11': { type: 'workshop', title: 'कार्यशाला - 33', activities: [{ title: 'कार्यशाला', location: 'इम्फाल (मणिपुर)' }] },
+            '2026-04-12': { type: 'travel', title: 'यात्रा', activities: [{ title: 'यात्रा', location: 'इम्फाल → आइजोल (मिजोरम)' }] },
+            '2026-04-13': { type: 'workshop', title: 'कार्यशाला - 34', activities: [{ title: 'कार्यशाला', location: 'आइजोल (मिजोरम)' }] },
+            '2026-04-14': { type: 'travel', title: 'यात्रा', activities: [{ title: 'यात्रा', location: 'आइजोल → अगरतला (त्रिपुरा)' }] },
+            '2026-04-15': { type: 'workshop', title: 'कार्यशाला - 35', activities: [{ title: 'कार्यशाला', location: 'अगरतला (त्रिपुरा)' }] },
+            '2026-04-16': { type: 'travel', title: 'वापसी / बफर दिवस', activities: [{ title: 'वापसी / बफर दिवस', location: 'अगरतला → गुवाहाटी' }] },
+            '2026-04-17': { type: 'travel', title: 'हवाई यात्रा', activities: [{ title: 'हवाई यात्रा', location: 'दिल्ली → श्रीनगर (कश्मीर)', time: 'प्रस्थान: 06:00 | आगमन: 08:00' }, { title: 'उसी दिन कार्यशाला', location: 'श्रीनगर' }, { title: 'रात्रि विश्राम', location: 'श्रीनगर' }] },
+            '2026-04-18': { type: 'travel', title: 'हवाई यात्रा', activities: [{ title: 'हवाई यात्रा', location: 'श्रीनगर → चंडीगढ़ (पंजाब)', time: 'प्रस्थान: 02:50 | आगमन: 04:00' }, { title: 'रात्रि विश्राम', location: 'चंडीगढ़' }] },
+            '2026-04-19': { type: 'workshop', title: 'कार्यशाला', activities: [{ title: 'कार्यशाला', location: 'चंडीगढ़', time: 'प्रातः 08:00 – सायं 05:00' }, { title: 'यात्रा', location: 'चंडीगढ़ → मंडी / शिमला (220 किमी, 3 घंटे)' }, { title: 'रात्रि विश्राम', location: 'मंडी या शिमला (हिमाचल प्रदेश)' }] },
+            '2026-04-20': { type: 'workshop', title: 'कार्यशाला', activities: [{ title: 'कार्यशाला', location: 'मंडी / शिमला (हिमाचल प्रदेश)', time: 'प्रातः 08:00 – सायं 05:00' }, { title: 'प्रस्थान', location: 'अगले स्थान के लिए' }] }
+        };
+
+        let currentMonth = 0;
+        const months = [
+            { name: 'फरवरी 2026', year: 2026, month: 2, days: 28 },
+            { name: 'मार्च 2026', year: 2026, month: 3, days: 31 },
+            { name: 'अप्रैल 2026', year: 2026, month: 4, days: 30 }
+        ];
+        const dayNames = ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि'];
+        let selectedDate = null;
+
+        function renderCalendar() {
+            const monthData = months[currentMonth];
+            document.getElementById('currentMonth').textContent = monthData.name;
+            const calendarGrid = document.getElementById('calendarGrid');
+            calendarGrid.innerHTML = '';
+            dayNames.forEach(day => {
+                const h = document.createElement('div');
+                h.className = 'day-header';
+                h.textContent = day;
+                calendarGrid.appendChild(h);
+            });
+            const firstDay = new Date(monthData.year, monthData.month - 1, 1).getDay();
+            for (let i = 0; i < firstDay; i++) {
+                const e = document.createElement('div');
+                e.className = 'calendar-day empty';
+                calendarGrid.appendChild(e);
+            }
+            for (let day = 1; day <= monthData.days; day++) {
+                const dateStr = `${monthData.year}-${String(monthData.month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const dayData = itineraryData[dateStr];
+                const dayDiv = document.createElement('div');
+                dayDiv.className = 'calendar-day';
+                if (dayData) dayDiv.classList.add(dayData.type);
+                if (dateStr === '2026-02-16') dayDiv.classList.add('today');
+                if (dateStr === selectedDate) dayDiv.classList.add('selected');
+                const dayNumber = document.createElement('div');
+                dayNumber.className = 'day-number';
+                dayNumber.textContent = day;
+                dayDiv.appendChild(dayNumber);
+                if (dayData) {
+                    const indicator = document.createElement('div');
+                    indicator.className = 'day-indicator';
+                    dayDiv.appendChild(indicator);
+                }
+                dayDiv.onclick = () => selectDate(dateStr);
+                calendarGrid.appendChild(dayDiv);
+            }
+        }
+
+        function selectDate(dateStr) {
+            selectedDate = dateStr;
+            renderCalendar();
+            showDetails(dateStr);
+            document.getElementById('detailsPanel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function showDetails(dateStr) {
+            const data = itineraryData[dateStr];
+            const detailsPanel = document.getElementById('detailsPanel');
+            if (!data) {
+                detailsPanel.innerHTML = `<div class="no-selection"><div class="no-selection-icon">📅</div><h3>कोई कार्यक्रम नहीं</h3><p>इस तिथि पर कोई यात्रा कार्यक्रम निर्धारित नहीं है</p></div>`;
+                return;
+            }
+            const [year, month, day] = dateStr.split('-');
+            const monthNames = ['जनवरी','फरवरी','मार्च','अप्रैल','मई','जून','जुलाई','अगस्त','सितंबर','अक्टूबर','नवंबर','दिसंबर'];
+            const dateFormatted = `${day} ${monthNames[parseInt(month)-1]} ${year}`;
+            const typeClassMap = { workshop: 'type-workshop', meeting: 'type-meeting', travel: 'type-travel', executive: 'type-executive' };
+            let activitiesHTML = data.activities.map(a => `
+                <div class="activity-item">
+                    <h4>${a.title}</h4>
+                    <p><span class="location">${a.location}</span></p>
+                    ${a.time ? `<p>⏰ ${a.time}</p>` : ''}
+                </div>`).join('');
+            detailsPanel.innerHTML = `
+                <div class="details-header">
+                    <div class="details-date">${dateFormatted}</div>
+                    <span class="details-type ${typeClassMap[data.type]}">${data.title}</span>
+                </div>
+                <div class="details-content">${activitiesHTML}</div>`;
+        }
+
+        function changeMonth(direction) {
+            currentMonth = Math.max(0, Math.min(2, currentMonth + direction));
+            renderCalendar();
+        }
+
+        function jumpToDate(dateStr) {
+            const [year, month] = dateStr.split('-');
+            currentMonth = parseInt(month) - 2;
+            renderCalendar();
+            selectDate(dateStr);
+        }
+
+        function showFullJourney() {
+            document.getElementById('journeyModal').classList.add('show');
+            populateJourneyTimeline();
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeJourneyModal() {
+            document.getElementById('journeyModal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('journeyModal').addEventListener('click', function(e) {
+            if (e.target === this) closeJourneyModal();
+        });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeJourneyModal(); });
+
+        function populateJourneyTimeline() {
+            const timeline = document.getElementById('journeyTimeline');
+            const monthNames = ['जनवरी','फरवरी','मार्च','अप्रैल','मई','जून','जुलाई','अगस्त','सितंबर','अक्टूबर','नवंबर','दिसंबर'];
+            const badgeMap = { workshop: 'badge-workshop', meeting: 'badge-meeting', travel: 'badge-travel', executive: 'badge-executive' };
+            let html = Object.keys(itineraryData).sort().map(dateStr => {
+                const data = itineraryData[dateStr];
+                const [year, month, day] = dateStr.split('-');
+                const dateFormatted = `${day} ${monthNames[parseInt(month)-1]} ${year}`;
+                let nightStay = '';
+                data.activities.forEach(a => { if (a.title.includes('रात्रि विश्राम')) nightStay = `🛏️ ${a.location}`; });
+                return `
+                <div class="journey-item">
+                    <div class="journey-date">
+                        ${dateFormatted}
+                        <span class="journey-type-badge ${badgeMap[data.type]}">${data.title}</span>
+                    </div>
+                    <div class="journey-details">
+                        ${data.activities.filter(a => !a.title.startsWith('रात्रि विश्राम')).map(a =>
+                            `• ${a.title}${a.location ? ': ' + a.location : ''}${a.time ? ' (' + a.time + ')' : ''}`
+                        ).join('<br>')}
+                        ${nightStay ? `<br><strong>${nightStay}</strong>` : ''}
+                    </div>
+                </div>`;
+            }).join('');
+            html += `
+            <div class="journey-item" style="background: linear-gradient(135deg, #FFF4E6, #FFE4C4); border-color: #FFAB5E;">
+                <div class="journey-date">शेष क्षेत्र <span class="journey-type-badge badge-travel">आगामी</span></div>
+                <div class="journey-details">
+                    📌 लेह एवं लद्दाख (केंद्र शासित प्रदेश)<br>
+                    📌 कश्मीर (जम्मू एवं कश्मीर – श्रीनगर क्षेत्र)<br>
+                    📌 अंडमान एवं निकोबार द्वीपसमूह<br>
+                    📌 लक्षद्वीप (केंद्र शासित प्रदेश)
+                </div>
+            </div>`;
+            timeline.innerHTML = html;
+        }
+
+        renderCalendar();
+        selectDate('2026-02-16');
+    </script>
+</body>
+</html>
